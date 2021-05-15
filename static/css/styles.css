@@ -1,0 +1,15 @@
+html {
+  background: linear-gradient(
+    180deg,
+    #06396D 0%,
+    #0C3978 0.01%,
+    #303ABB 60.42%,
+    #4F3AF4 89.58%,
+    #8042FE 100%),
+    #06396D;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  color: white;
+}
+
