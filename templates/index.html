@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p class="xx">Hello Django</p>
+
+
+{% for b in budget %}
+
+<p>{{ b.name }}</p>
+<p>{{ b }}</p>
+
+{% endfor %}
+
+<hr/>
+
+{% for e in expenses %}
+
+<p>{{ e.price }}</p>
+
+{% endfor %}
+
+{% endblock content %}
+
+
+
