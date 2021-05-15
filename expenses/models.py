@@ -16,16 +16,27 @@ currencies = (
 )
 
 
-class Expense(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    category = models.CharField(max_length=15, choices=categories)
+class Budget(models.Model):
+    name = models.CharField(max_length=100)
     currency = models.CharField(max_length=3, choices=currencies)
+    users = models.ManyToManyField(User)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.amount} {self.currency} - {self.category}"
+        return self.name
+
+
+class Expense(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    category = models.CharField(max_length=15, choices=categories)
+    budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.price} - {self.category}"
 
     @classmethod
     def get_by_id(cls, id):
@@ -35,3 +46,9 @@ class Expense(models.Model):
             return None
         else:
             return expense
+
+
+
+
+
+
