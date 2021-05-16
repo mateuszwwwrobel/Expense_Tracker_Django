@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
+<nav class="font-poppins font-poppins-navbar navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
 
-</body>
-</html>
+        <a class="navbar-brand" href="{% url 'home-page' %}"><img src="{% static 'img/logo.svg'%}" alt="Logo"></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <ul class="d-flex navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item px-5">
+                    <a id="nav-about"
+                       class="text-white nav-button nav-link" href="{% url 'about-page' %}">ABOUT US</a>
+                </li>
+                <li class="nav-item px-5">
+                    <a id="nav-contact"
+                       class="text-white nav-button nav-link" href="{% url 'contact-page' %}">CONTACT US</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

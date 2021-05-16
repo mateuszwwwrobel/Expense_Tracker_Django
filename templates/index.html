@@ -1,26 +1,32 @@
 {% extends 'base.html' %}
+{% block title %}
+<title>Welcome - Expense Tracker </title>
+{% endblock title %}
+
 
 {% block content %}
 
-<p class="xx">Hello Django</p>
-
-
-{% for b in budget %}
-
-<p>{{ b.name }}</p>
-<p>{{ b }}</p>
-
-{% endfor %}
-
-<hr/>
-
-{% for e in expenses %}
-
-<p>{{ e.price }}</p>
-
-{% endfor %}
+<div class="row font-poppins mt-5">
+    <div class="col-lg-6">
+        <h1 class="font-poppins-title-700">EXPENSE</h1>
+        <h1 class="font-poppins-title-300">TRACKER</h1>
+        <h4 class="font-open-sans">We are excited to welcome you to Expense Tracker!</h4>
+        <h4 class="font-open-sans">Check the structure of your expenses and save with us.
+            It is easy to use and completely free! It is all about control so...
+            Control your expenses with Us.</h4>
+        <div class="flex mt-5">
+            <a href="{% url 'begin-page' %}">
+                <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1">Try it
+                <span class="font-poppins-CTA-600">NOW</span>
+                </button>
+            </a>
+            <a href="{% url 'learn-more-page' %}">
+            <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1 mt-2">Learn More</button>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-6">
+    </div>
+</div>
 
 {% endblock content %}
-
-
-
