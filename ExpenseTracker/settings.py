@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     # Custom apps:
     'expenses',
-    'front_views',
+    'core',
 
     # 3rd party apps:
     'rest_framework',
