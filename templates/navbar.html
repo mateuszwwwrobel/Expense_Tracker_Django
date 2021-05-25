@@ -2,7 +2,7 @@
 <nav class="font-poppins font-poppins-navbar navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="{% url 'home-page' %}"><img src="{% static 'img/logo.svg'%}" alt="Logo"></a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'img/logo.svg'%}" alt="Logo"></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,11 +13,11 @@
             <ul class="d-flex navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item px-5">
                     <a id="nav-about"
-                       class="text-white nav-button nav-link" href="{% url 'about-page' %}">ABOUT US</a>
+                       class="text-white nav-button nav-link" href="{% url 'about' %}">ABOUT US</a>
                 </li>
                 <li class="nav-item px-5">
                     <a id="nav-contact"
-                       class="text-white nav-button nav-link" href="{% url 'contact-page' %}">CONTACT US</a>
+                       class="text-white nav-button nav-link" href="{% url 'contact' %}">CONTACT US</a>
                 </li>
             </ul>
         </div>
