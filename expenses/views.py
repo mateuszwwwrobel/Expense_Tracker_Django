@@ -40,7 +40,4 @@ class ExpenseDeleteView(DestroyAPIView):
     permission_classes = (permissions.AllowAny,)
 
 
-class CreateBudgetView(View):
 
-    def get(self, request):
-        return render(request, 'logged/create_budget.html')

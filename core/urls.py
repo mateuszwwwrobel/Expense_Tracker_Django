@@ -7,4 +7,7 @@ urlpatterns = [
     path('about/', core_views.AboutView.as_view(), name='about'),
     path('contact/', core_views.ContactView.as_view(), name='contact'),
     path('learn-more/', core_views.LearnMoreView.as_view(), name='learn-more'),
+
+    path('create_budget', core_views.CreateBudgetView.as_view(), name='create_budget'),
+
 ]

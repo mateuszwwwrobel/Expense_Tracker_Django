@@ -8,7 +8,4 @@ urlpatterns = [
     path('update/<id>', views.ExpenseUpdateView.as_view(), name='expense_update'),
     path('delete/<id>', views.ExpenseDeleteView.as_view(), name='expense_delete'),
 
-    path('create_budget', views.CreateBudgetView.as_view(), name='create_budget'),
-
-
 ]
