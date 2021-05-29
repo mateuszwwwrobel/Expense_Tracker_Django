@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView, View, DetailView
 from core.forms import CreateBudgetForm
+from expenses.models import Budget, Expense
 
 
 class HomeView(TemplateView):
@@ -20,8 +21,33 @@ class LearnMoreView(TemplateView):
     template_name = 'learnmore.html'
 
 
-class ProfileView(TemplateView):
-    template_name = 'logged/profile.html'
+class ProfileView(LoginRequiredMixin ,View):
+    def get(self, request):
+        own_budgets = Budget.objects.filter(created_by=request.user)
+        member_budgets = Budget.objects.filter(users=request.user)
+        context = {
+            'own_budgets': own_budgets,
+            'member_budgets': member_budgets,
+        }
+
+        return render(request, 'logged/profile.html', context)
+
+
+class BudgetView(LoginRequiredMixin, DetailView):
+    template_name = 'budget.html'
+    model = Budget
+
+    def get(self, request, pk):
+
+        budget = Budget.objects.get(id=pk)
+        expenses = Expense.objects.filter(budget=budget)
+
+        context = {
+            'budget': budget,
+            'expenses': expenses,
+        }
+
+        return render(request, 'logged/budget.html', context)
 
 
 class CreateBudgetView(LoginRequiredMixin, View):

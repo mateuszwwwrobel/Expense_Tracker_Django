@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Profile - Expense Tracker</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="font-poppins mt-5 row">
+    <div class="div-trans-purple col-lg-12">
+        <h4 class="p-2">Budget {{ budget.name }}</h4>
+        <p>FORMULARZ do wprowadzania wydatków</p>
+    </div>
+
+    {% for expense in expenses %}
+    <div class="div-trans-purple row py-5 align-items">
+        <div class="col-8 px-5 row align-items">
+            <div class="col-2">
+                {% if expense.category == 'Food' %}
+                <span class="category-icon"><i class="fas fa-utensils fa-lg"></i></span>
+                {% elif expense.category == 'Bills' %}
+                <span class="category-icon"><i class="fas fa-bolt fa-lg"></i></span>
+                {% elif expense.category == 'Travel' %}
+                <span class="category-icon"><i class="fas fa-route fa-lg"></i></span>
+                {% elif expense.category == 'Entertainment' %}
+                <span class="category-icon"><i class="fas fa-atom fa-lg"></i></span>
+                {% endif %}
+            </div>
+            <div class="col-10">
+                <span class="font-budget-name">{{ expense.name|capfirst }}</span>
+                <br>
+                <span class="font-budget-date">{{ expense.created_at|date:'M d Y' }} - {{ expense.user|capfirst }}</span>
+            </div>
+        </div>
+        <div class="col-2 mx-auto">
+            <span class="font-budget-date">{{ expense.price }} {{ budget.currency }}</span>
+        </div>
+        <div class="col-1 mx-auto">
+            <span class="delete-icon"><i class="far fa-trash-alt fa-lg"></i></span>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock content %}

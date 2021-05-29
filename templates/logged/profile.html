@@ -6,6 +6,31 @@
 
 {% block content %}
 
-<p>PROFILE</p>
+<div class="font-poppins div-trans-purple mt-5 row">
+    <div class="col-lg-6">
+        <h4 class="p-2">YOUR CREATED BUDGETS</h4>
+        <ul>
+            {% for budget in own_budgets %}
+            <li>
+                <a class="font-poppins text-white" href="{% url 'budget' pk=budget.id%}">
+                    {{ budget.name|capfirst }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-lg-6">
+        <h4 class="p-2">BUDGETS YOU ARE MEMBER OF</h4>
+        <ul>
+            {% for budget in member_budgets %}
+            <li>
+                <a class="font-poppins text-white" href="{% url 'budget' pk=budget.id%}">
+                    {{ budget.name|capfirst }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
 {% endblock content %}

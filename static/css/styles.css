@@ -100,10 +100,48 @@ body, html {
     text-align: center;
 }
 
+.align-items{
+    align-items: center;
+}
+
 .form-label > input {
     padding: 7px;
     margin 5px 0;
     border: 0;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
     border-radius:10px;
+}
+
+.delete-icon{
+    border-radius: 12px;
+    padding: 10px;
+    background: #C4C4C4;
+}
+
+.delete-icon:hover{
+    background: #F2C94C;
+}
+
+.category-icon{
+    border-radius: 12px;
+    padding: 10px;
+    background: #F2C94C;
+    color: #06396D;
+}
+
+
+.font-budget-name{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 140.62%;
+}
+
+.font-budget-date{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140.62%;
 }

@@ -7,7 +7,7 @@ categories = (
     ('Food', 'Food'),
     ('Entertainment', 'Entertainment'),
     ('Bills', 'Bills'),
-    ('Travel', 'Travel')
+    ('Travel', 'Travel'),
 )
 
 currencies = (
@@ -31,6 +31,7 @@ class Budget(models.Model):
 
 class Expense(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
+    name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.CharField(max_length=15, choices=categories)
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
@@ -48,9 +49,3 @@ class Expense(models.Model):
             return None
         else:
             return expense
-
-
-
-
-
-
