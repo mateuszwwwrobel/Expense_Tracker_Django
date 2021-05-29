@@ -12,10 +12,6 @@ from account.tokens import account_activation_token
 from account.forms import SignUpForm
 
 
-class ProfileView(TemplateView):
-    template_name = 'logged/profile.html'
-
-
 class BeginView(TemplateView):
     template_name = 'begin.html'
 

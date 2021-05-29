@@ -13,13 +13,15 @@ categories = (
 currencies = (
     ('PLN', 'PLN'),
     ('GBP', 'GBP'),
+    ('EUR', 'EUR'),
 )
 
 
 class Budget(models.Model):
     name = models.CharField(max_length=100)
     currency = models.CharField(max_length=3, choices=currencies)
-    users = models.ManyToManyField(User)
+    created_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name='created_by')
+    users = models.ManyToManyField(User, related_name='users')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

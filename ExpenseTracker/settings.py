@@ -60,7 +60,7 @@ MIDDLEWARE = [
 
 
 ROOT_URLCONF = 'ExpenseTracker.urls'
-EMAIL_BACKEND = 'django.account.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 TEMPLATES = [
