@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic.base import TemplateView, View
+from django.views import View
 from rest_framework import permissions
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
-from expenses.models import Expense, Budget
+from expenses.models import Expense
 from expenses.serializers import ExpenseSerializer
 
 
@@ -40,13 +40,7 @@ class ExpenseDeleteView(DestroyAPIView):
     permission_classes = (permissions.AllowAny,)
 
 
-class TestView(View):
+class CreateBudgetView(View):
 
     def get(self, request):
-
-        context = {
-            'budget': Budget.objects.all(),
-            'expenses': Expense.objects.filter(budget=1)
-        }
-
-        return render(self.request, 'index.html', context)
+        return render(request, 'logged/create_budget.html')

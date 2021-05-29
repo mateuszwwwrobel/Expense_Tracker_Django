@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Custom apps:
     'expenses',
+    'account',
     'core',
 
     # 3rd party apps:
@@ -57,8 +58,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'ExpenseTracker.urls'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.account.mail.backends.console.EmailBackend'
+
 
 TEMPLATES = [
     {

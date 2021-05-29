@@ -1,19 +1,14 @@
 from django.urls import path
-from expenses.views import (
-    ExpenseListView,
-    ExpenseDetailView,
-    ExpenseCreateView,
-    ExpenseUpdateView,
-    ExpenseDeleteView,
-    TestView)
+from expenses import views
 
 urlpatterns = [
-    path('', ExpenseListView.as_view(), name='all_expenses'),
-    path('<id>/', ExpenseDetailView.as_view(), name='expense_detail'),
-    path('create', ExpenseCreateView.as_view(), name='expense_create'),
-    path('update/<id>', ExpenseUpdateView.as_view(), name='expense_update'),
-    path('delete/<id>', ExpenseDeleteView.as_view(), name='expense_delete'),
-    path('test', TestView.as_view(), name='test_view'),
+    path('', views.ExpenseListView.as_view(), name='all_expenses'),
+    path('<id>/', views.ExpenseDetailView.as_view(), name='expense_detail'),
+    path('create', views.ExpenseCreateView.as_view(), name='expense_create'),
+    path('update/<id>', views.ExpenseUpdateView.as_view(), name='expense_update'),
+    path('delete/<id>', views.ExpenseDeleteView.as_view(), name='expense_delete'),
+
+    path('create_budget', views.CreateBudgetView.as_view(), name='create_budget'),
 
 
 ]

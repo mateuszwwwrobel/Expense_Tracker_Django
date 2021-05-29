@@ -11,5 +11,9 @@ function navbarSelector() {
         let element = document.getElementById('nav-contact')
         element.className += ' nav-button-active'
     }
+    else if(document.title == 'Profile - Expense Tracker'){
+        let element = document.getElementById('nav-profile')
+        element.className += ' nav-button-active'
+    }
 };
 

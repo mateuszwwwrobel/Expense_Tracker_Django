@@ -14,6 +14,18 @@
         <h4 class="font-open-sans">Check the structure of your expenses and save with us.
             It is easy to use and completely free! It is all about control so...
             Control your expenses with Us.</h4>
+        {% if request.user.is_authenticated %}
+        <div class="flex mt-5">
+            <a href="{% url 'create_budget' %}">
+                <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1">
+                CREATE YOUR BUDGET
+                </button>
+            </a>
+            <a href="{% url 'learn-more' %}">
+            <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1 mt-2">Learn More</button>
+            </a>
+        </div>
+        {% else %}
         <div class="flex mt-5">
             <a href="{% url 'begin' %}">
                 <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1">Try it
@@ -24,6 +36,7 @@
             <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1 mt-2">Learn More</button>
             </a>
         </div>
+        {% endif %}
     </div>
     <div class="col-lg-6">
     </div>

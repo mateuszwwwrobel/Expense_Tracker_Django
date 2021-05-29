@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Login - Expense Tracker </title>
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="font-poppins mt-5 signup-div">
+    <div class="div-trans-purple col-lg-6">
+        <h2 class="py-3 font-poppins">LOGIN</h2>
+        {% if form.errors %}
+        <p class="text-danger bg-warning">Your username and password didn't match. Please try again.</p>
+        {% endif %}
+        <form class="pb-4" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <p class="font-poppins font-poppins-navbar">
+                {{ field.label_tag }}
+                <br>
+                <span class="form-label">{{ field }}</span>
+            </p>
+            {% endfor %}
+            <button class="text-white CTA-button px-5" type="submit">LOGIN</button>
+        </form>
+        <p class="pb-3">Forgot your password? Click
+            <a class="text-white" href="{% url 'password-reset' %}">here</a> to reset.
+        </p>
+    </div>
+
+</div>
+<div class="col-lg-6">
+</div>
+</div>
+
+{% endblock content %}
