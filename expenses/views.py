@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.views import View
+from django.shortcuts import redirect
 from rest_framework import permissions
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 from expenses.models import Expense
@@ -24,6 +23,11 @@ class ExpenseCreateView(CreateAPIView):
     serializer_class = ExpenseSerializer
     lookup_field = 'id'
     permission_classes = (permissions.AllowAny, )
+
+    def create(self, request, *args, **kwargs):
+        response = super(ExpenseCreateView, self).create(request, *args, **kwargs)
+
+        return redirect('budget', pk=response.data['budget'])
 
 
 class ExpenseUpdateView(UpdateAPIView):

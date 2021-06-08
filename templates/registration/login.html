@@ -3,11 +3,14 @@
 <title>Login - Expense Tracker </title>
 {% endblock title %}
 
+{% block background %}
+<body class="bg">
+{% endblock %}
 
 {% block content %}
 
 <div class="font-poppins mt-5 signup-div">
-    <div class="div-trans-purple col-lg-6">
+    <div class="col-lg-6">
         <h2 class="py-3 font-poppins">LOGIN</h2>
         {% if form.errors %}
         <p class="text-danger bg-warning">Your username and password didn't match. Please try again.</p>

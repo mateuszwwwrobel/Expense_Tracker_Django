@@ -10,6 +10,32 @@ body, html {
     background-size: cover;
 }
 
+.bg-2 {
+    background-image: url('../img/HOME2.svg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-1 {
+    background-image: url('../img/HOME.svg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.signup-bg{
+    background-image: url('../img/signup.svg');
+    height: 739px;
+    width: 477px;
+}
+
+.about-div{
+    background-image: url('../img/about-div.svg');
+    height: 743px;
+    width: 1109px;
+}
+
 .text-white{
     color: white;
 }
@@ -144,4 +170,8 @@ body, html {
     font-weight: 500;
     font-size: 18px;
     line-height: 140.62%;
+}
+
+.p-sign{
+    padding-top: 130px;
 }
