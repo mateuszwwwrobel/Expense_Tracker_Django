@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, View, DetailView
 from core.forms import CreateBudgetForm
 from expenses.models import Budget, Expense
+from expenses.serializers import ExpenseSerializer
 
 
 class HomeView(TemplateView):
@@ -38,11 +39,12 @@ class BudgetView(LoginRequiredMixin, DetailView):
     model = Budget
 
     def get(self, request, pk):
-
+        serializer = ExpenseSerializer()
         budget = Budget.objects.get(id=pk)
-        expenses = Expense.objects.filter(budget=budget)
+        expenses = Expense.objects.filter(budget=budget).order_by('-created_at')
 
         context = {
+            'serializer': serializer,
             'budget': budget,
             'expenses': expenses,
         }
