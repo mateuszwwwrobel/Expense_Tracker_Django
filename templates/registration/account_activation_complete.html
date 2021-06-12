@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block background %}
+<body class="bg">
+{% endblock %}
+
 {% block content %}
 <p class="mt-5">Account has been successfully activated. Please log in to begin.</p>
 <a href="{% url 'login' %}">

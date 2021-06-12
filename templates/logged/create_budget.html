@@ -11,14 +11,14 @@
 {% block content %}
 
 <div class="font-poppins mt-5 signup-div">
-    <div class="col-lg-6">
+    <div class="col-lg-6 text-center">
         <h2 class="py-3 font-poppins">BUDGET</h2>
-        <p>To start please create your budget with form below.</p>
+        <p>To start please create your budget.</p>
         <p></p>
         <form class="pb-4" method="post">
             {% csrf_token %}
             {% for field in form %}
-            <p class="font-poppins font-poppins-navbar">
+            <p class="font-poppins">
                 {{ field.label_tag }}
                 <br>
                 <span class="form-label">{{ field }}</span>
@@ -27,7 +27,6 @@
             <button class="text-white CTA-button px-5" type="submit">CREATE BUDGET</button>
         </form>
     </div>
-
 </div>
 <div class="col-lg-6">
 </div>

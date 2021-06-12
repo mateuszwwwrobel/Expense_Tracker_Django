@@ -24,6 +24,22 @@ body, html {
     background-size: cover;
 }
 
+@media only screen and (max-width: 700px) {
+    .bg {
+        background-image: url('../img/HOME.svg');
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .bg-1 {
+        background-image: url('../img/HOME2.svg');
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
 .signup-bg{
     background-image: url('../img/signup.svg');
     height: 739px;
@@ -103,12 +119,14 @@ body, html {
     height: 43px;
     background: linear-gradient(89.95deg, #8042FE 7.87%, #4F3AF4 97.73%), #8042FE;
     box-shadow: 0px 22px 33.4221px rgba(0, 0, 0, 0.0503198);
+    border: 0;
     border-radius: 16px;
 }
 
 .CTA-button:hover{
     background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(101.37deg, #F2C94C 4.08%, #F2994A 84.62%);
     box-shadow: 0px 22px 33.4221px rgba(0, 0, 0, 0.0503198);
+    border: 0;
     border-radius: 16px;
 }
 
@@ -122,15 +140,11 @@ body, html {
     margin: 0 20px 20px 20px;
 }
 
-.signup-div{
-    text-align: center;
-}
-
 .align-items{
     align-items: center;
 }
 
-.form-label > input {
+.form-label > input, select {
     padding: 7px;
     margin 5px 0;
     border: 0;
@@ -142,10 +156,12 @@ body, html {
     border-radius: 12px;
     padding: 10px;
     background: #C4C4C4;
+    color: white;
 }
 
 .delete-icon:hover{
     background: #F2C94C;
+    color: #06396D;
 }
 
 .category-icon{
@@ -154,7 +170,6 @@ body, html {
     background: #F2C94C;
     color: #06396D;
 }
-
 
 .font-budget-name{
     font-family: Poppins;
@@ -174,4 +189,8 @@ body, html {
 
 .p-sign{
     padding-top: 130px;
+}
+
+.float-right{
+    float: right;
 }
