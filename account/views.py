@@ -7,6 +7,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
+from django.contrib import messages
 
 from account.tokens import account_activation_token
 from account.forms import SignUpForm
@@ -62,6 +63,7 @@ class LoginView(View):
         if form.is_valid():
             user = User.objects.get(username=request.POST['username'])
             login(request, user)
+            messages.success(request, 'You have logged in successfully!')
             return redirect('home')
         else:
             context = {
@@ -73,6 +75,7 @@ class LoginView(View):
 class LogoutView(View):
     def get(self, request):
         logout(request)
+        messages.success(request, 'You have logged out!')
         return redirect('home')
 
 

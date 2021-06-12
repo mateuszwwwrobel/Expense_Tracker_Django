@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import TemplateView, View, DetailView
 from core.forms import CreateBudgetForm
+from django.contrib import messages
 from expenses.models import Budget, Expense
 from expenses.serializers import ExpenseSerializer
 
@@ -22,7 +23,7 @@ class LearnMoreView(TemplateView):
     template_name = 'learnmore.html'
 
 
-class ProfileView(LoginRequiredMixin ,View):
+class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
         own_budgets = Budget.objects.filter(created_by=request.user)
         member_budgets = Budget.objects.filter(users=request.user)
@@ -68,7 +69,6 @@ class CreateBudgetView(LoginRequiredMixin, View):
             obj = form.save(commit=False)
             obj.created_by = request.user
             obj.save()
+            messages.success(request, 'Budget successfully created!')
 
-        return render(request, 'logged/create_budget.html')
-
-
+        return render(request, 'logged/create_budget.html', {'form': CreateBudgetForm()})
