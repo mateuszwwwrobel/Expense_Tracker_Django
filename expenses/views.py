@@ -1,8 +1,9 @@
 from django.shortcuts import redirect
-from rest_framework import permissions
+from rest_framework import permissions, status
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 from expenses.models import Expense
 from expenses.serializers import ExpenseSerializer
+from rest_framework.response import Response
 
 
 class ExpenseListView(ListAPIView):
@@ -43,5 +44,7 @@ class ExpenseDeleteView(DestroyAPIView):
     lookup_field = 'id'
     permission_classes = (permissions.AllowAny,)
 
+    def delete(self, request, *args, **kwargs):
+        super(ExpenseDeleteView, self).delete(request, *args, **kwargs)
 
-
+        return Response(status=status.HTTP_204_NO_CONTENT)
