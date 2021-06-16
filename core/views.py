@@ -72,3 +72,15 @@ class CreateBudgetView(LoginRequiredMixin, View):
             messages.success(request, 'Budget successfully created!')
 
         return render(request, 'logged/create_budget.html', {'form': CreateBudgetForm()})
+
+
+class BudgetStats(LoginRequiredMixin, View):
+
+    def get(self, request, budget_id):
+        budget = Budget.objects.get(id=budget_id)
+
+        context = {
+            'budget': budget,
+        }
+
+        return render(request, 'logged/budget_stats.html', context)
