@@ -36,6 +36,9 @@ function getCookie(name) {
 
 
 function DeleteExpense(expense_id) {
+    let result = confirm('Are you sure you want to delete this entry?');
+    if (result) {
+
     const csrftoken = getCookie('csrftoken');
 
     fetch('/expenses/delete/' + expense_id, {
@@ -51,4 +54,5 @@ function DeleteExpense(expense_id) {
         .catch(error => {
             console.log(error)
         })
+    }
 }
