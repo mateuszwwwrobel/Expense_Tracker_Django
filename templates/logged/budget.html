@@ -13,13 +13,19 @@
 {% block content %}
 
 <div class="font-poppins mt-5">
-    <div class="div-trans-purple col-lg-12 row text-center">
-        <h4 class="p-2">Budget {{ budget.name }}</h4>
+    <div class="text-center">
+        <h4 class="p-2">{{ budget.name|capfirst }} Budget
+        {% if request.user == budget.created_by %}
+        <a href="#" class="mx-3 delete-icon">
+                <i class="far fa-trash-alt fa-lg"></i>
+        </a>
+        {% endif %}
+        </h4>
         <form action="{% url 'expense_create'%}" method="POST">
             {% csrf_token %}
             <div class="col-12 form-label">
-                <input placeholder="Name" type="text" id="name" name="name">
-                <input placeholder="Price" type="number" step="0.01" id="price" name="price">
+                <input class="budget-input" required="required" placeholder="Name" type="text" id="name" name="name">
+                <input class="budget-input" required="required" placeholder="Price" type="number" step="0.01" id="price" name="price">
             </div>
             <div class="col-12 form-label">
                 <select id="category" name="category">
@@ -28,16 +34,16 @@
                     <option value="Travel">Travel</option>
                     <option value="Bills">Bills</option>
                 </select>
-                <input type="hidden" id="budget" name="budget" value="{{budget.id}}">
-                <input type="hidden" id="user" name="user" value="{{request.user.id}}">
+                <input type="hidden" id="budget" name="budget" value="{{ budget.id }}">
+                <input type="hidden" id="user" name="user" value="{{ request.user.id }}">
                 <input class="text-white CTA-button px-5" type="submit" value="ADD">
             </div>
 
         </form>
     </div>
-
+    {% if expenses %}
     {% for expense in expenses %}
-    <div class="div-trans-purple row py-5 align-items">
+    <div class="div-trans-purple row py-4 align-items">
         <div class="col-8 px-5 row align-items">
             <div class="col-2">
                 {% if expense.category == 'Food' %}
@@ -66,6 +72,11 @@
         </div>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="text-center pt-5">
+        <h2>Use a form to add expenses to your budget!</h2>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock content %}

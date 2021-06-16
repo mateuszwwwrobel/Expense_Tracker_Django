@@ -146,10 +146,14 @@ body, html {
 
 .form-label > input, select {
     padding: 7px;
-    margin 5px 0;
+    margin: 5px 0;
     border: 0;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
     border-radius:10px;
+}
+
+.budget-input{
+    width: 200px;
 }
 
 .delete-icon{
@@ -157,11 +161,25 @@ body, html {
     padding: 10px;
     background: #C4C4C4;
     color: white;
+    border: 0;
 }
 
 .delete-icon:hover{
     background: #F2C94C;
     color: #06396D;
+}
+
+.stats-icon{
+    border-radius: 12px;
+    padding: 10px;
+    background: #F2C94C;
+    color: #06396D;
+    border: 0;
+}
+
+.stats-icon:hover{
+    background: #C4C4C4;
+    color: white;
 }
 
 .category-icon{
