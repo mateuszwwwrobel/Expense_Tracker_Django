@@ -22,7 +22,7 @@
                 <a class="text-white budget-list" href="{% url 'budget' pk=budget.id %}">
                     {{ budget.name|capfirst }}
                 </a>
-                <a class="mx-3 stats-icon">
+                <a href="{% url 'statistics' pk=budget.id %}" class="mx-3 stats-icon">
                     <i class="fas fa-lg fa-chart-line"></i>
                 </a>
             </li>
