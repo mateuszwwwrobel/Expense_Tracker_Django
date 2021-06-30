@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Create Budget - Expense Tracker</title>
+{% endblock title %}
+
+{% block background %}
+<body class="bg-1">
+{% endblock %}
+
+{% block content %}
+
+<div class="font-poppins mt-5 signup-div row">
+    <div class="col-lg-6 text-center">
+        <h2 class="py-3 font-poppins">{{ budget|capfirst }} Budget Statistics</h2>
+        {% if expenses %}
+        <table class="text-white table table-sm" id="myTable">
+            <thead class="thead-dark">
+            <tr>
+                <th>Price [{{ budget.currency }}]</th>
+                <th>Category</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.price }}</td>
+                <td>{{ expense.category }}</td>
+                <td>{{ expense.created_at|date:'d M Y' }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+        <p>No data to show.</p>
+        {% endif %}
+    </div>
+    <div class="col-lg-6 text-center">
+        <canvas id="pie-chart"></canvas>
+    </div>
+</div>
+
+{% endblock content %}

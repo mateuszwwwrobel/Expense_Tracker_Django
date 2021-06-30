@@ -21,11 +21,11 @@
         <div class="flex mt-5">
             <a href="{% url 'create_budget' %}">
                 <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1">
-                CREATE YOUR BUDGET
+                Create New Budget
                 </button>
             </a>
-            <a href="{% url 'learn-more' %}">
-            <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1 mt-2">Learn More</button>
+            <a href="{% url 'profile' %}">
+            <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1 mt-2">{{ user|capfirst }} Profile</button>
             </a>
         </div>
         {% else %}

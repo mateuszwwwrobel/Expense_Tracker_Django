@@ -14,7 +14,6 @@
     <div class="col-lg-6 text-center">
         <h2 class="py-3 font-poppins">{{ budget|capfirst }} Budget Statistics</h2>
         <p>Select just a start month to see statistics for that month or select a range.</p>
-
         <form action="{% url 'show_stats' %}" class="pb-4 form-label" method="get">
             <label class="py-3" for="start">Start month:</label>
             <input required="required" type="month" id="start" name="start">
@@ -23,9 +22,8 @@
             <input type="month" id="end" name="end">
             <br>
             <input type="hidden" id="budget" name="budget" value="{{ budget.id }}">
-            <button class="text-white CTA-button px-5" type="submit">SHOW STATS</button>
+            <button class="text-white CTA-button px-5" type="submit">Show Statistics</button>
         </form>
-
     </div>
 </div>
 
