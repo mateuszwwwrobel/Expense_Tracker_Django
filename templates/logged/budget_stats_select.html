@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Create Budget - Expense Tracker</title>
+{% endblock title %}
+
+{% block background %}
+<body class="bg-1">
+{% endblock %}
+
+{% block content %}
+
+<div class="font-poppins mt-5 signup-div">
+    <div class="col-lg-6 text-center">
+        <h2 class="py-3 font-poppins">{{ budget|capfirst }} Budget Statistics</h2>
+        <p>Select just a start month to see statistics for that month or select a range.</p>
+        <form action="{% url 'show_stats' %}" class="pb-4 form-label" method="get">
+            <label class="py-3" for="start">Start month:</label>
+            <input required="required" type="month" id="start" name="start">
+            <br>
+            <label class="py-5" for="end">End month:</label>
+            <input type="month" id="end" name="end">
+            <br>
+            <input type="hidden" id="budget" name="budget" value="{{ budget.id }}">
+            <button class="text-white CTA-button px-5" type="submit">Show Statistics</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

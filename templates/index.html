@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Welcome - Expense Tracker </title>
+{% endblock title %}
+
+{% block background %}
+<body class="bg">
+{% endblock %}
+
+{% block content %}
+
+<div class="row font-poppins mt-5 px-2">
+    <div class="col-lg-6">
+        <h1 class="font-poppins-title-700">EXPENSE</h1>
+        <h1 class="font-poppins-title-300">TRACKER</h1>
+        <h4 class="font-open-sans">We are excited to welcome you to Expense Tracker!</h4>
+        <h4 class="font-open-sans">Check the structure of your expenses and save with us.
+            It is easy to use and completely free! It is all about control so...
+            Control your expenses with Us.</h4>
+        {% if request.user.is_authenticated %}
+        <div class="flex mt-5">
+            <a href="{% url 'create_budget' %}">
+                <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1">
+                Create New Budget
+                </button>
+            </a>
+            <a href="{% url 'profile' %}">
+            <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1 mt-2">{{ user|capfirst }} Profile</button>
+            </a>
+        </div>
+        {% else %}
+        <div class="flex mt-5">
+            <a href="{% url 'begin' %}">
+                <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1">Try it
+                <span class="font-poppins-CTA-600">NOW</span>
+                </button>
+            </a>
+            <a href="{% url 'learn-more' %}">
+            <button class="font-poppins-CTA-300 font-poppins text-white CTA-button py-1 px-4 mx-1 mt-2">Learn More</button>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-lg-6">
+    </div>
+</div>
+
+{% endblock content %}

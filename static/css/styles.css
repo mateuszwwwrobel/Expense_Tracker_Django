@@ -1,0 +1,218 @@
+body, html {
+    height: 100%;
+    color: white;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.bg {
+    background-image: url('../img/BACKGROUND.svg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-2 {
+    background-image: url('../img/HOME2.svg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-1 {
+    background-image: url('../img/HOME.svg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+@media only screen and (max-width: 700px) {
+    .bg {
+        background-image: url('../img/HOME.svg');
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .bg-1 {
+        background-image: url('../img/HOME2.svg');
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+.signup-bg{
+    background-image: url('../img/signup.svg');
+    height: 739px;
+    width: 477px;
+}
+
+.about-div{
+    background-image: url('../img/about-div.svg');
+    height: 743px;
+    width: 1109px;
+}
+
+.text-white{
+    color: white;
+}
+
+.font-poppins{
+    font-family: Poppins;
+    font-style: normal;
+}
+
+.font-poppins-navbar{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.font-poppins-CTA-300{
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.font-poppins-CTA-600{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.font-poppins-title-300{
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 85px;
+}
+
+.font-poppins-title-700{
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 85px;
+}
+
+.font-open-sans{
+    font-family: Open Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0.005em;
+    text-align: justify;
+}
+
+
+.nav-button{
+    text-align: center;
+    width: 125px;
+    padding: 5px 0 5px 0;
+    height: auto;
+}
+
+.nav-button:hover{
+    transform: scale(1.1);
+}
+
+.nav-button-active{
+    border: 3px solid #F2C94C;
+    border-radius: 16px;
+}
+
+.CTA-button{
+    height: 43px;
+    background: linear-gradient(89.95deg, #8042FE 7.87%, #4F3AF4 97.73%), #8042FE;
+    box-shadow: 0px 22px 33.4221px rgba(0, 0, 0, 0.0503198);
+    border: 0;
+    border-radius: 16px;
+}
+
+.CTA-button:hover{
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(101.37deg, #F2C94C 4.08%, #F2994A 84.62%);
+    box-shadow: 0px 22px 33.4221px rgba(0, 0, 0, 0.0503198);
+    border: 0;
+    border-radius: 16px;
+}
+
+.CTA-button-begin{
+    margin: 0 80px 0 80px;
+}
+
+.div-trans-purple{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    margin: 0 20px 20px 20px;
+}
+
+.align-items{
+    align-items: center;
+}
+
+.form-label > input, select {
+    padding: 7px;
+    margin: 5px 0;
+    border: 0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+}
+
+.budget-input{
+    width: 200px;
+}
+
+.delete-icon{
+    border-radius: 12px;
+    padding: 10px;
+    background: #C4C4C4;
+    color: white;
+    border: 0;
+}
+
+.delete-icon:hover{
+    background: #F2C94C;
+    color: #06396D;
+}
+
+.stats-icon{
+    border-radius: 12px;
+    padding: 10px;
+    background: #F2C94C;
+    color: #06396D;
+    border: 0;
+}
+
+.stats-icon:hover{
+    background: #C4C4C4;
+    color: white;
+}
+
+.category-icon{
+    border-radius: 12px;
+    padding: 10px;
+    background: #F2C94C;
+    color: #06396D;
+}
+
+.font-budget-name{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 140.62%;
+}
+
+.font-budget-date{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140.62%;
+}
+
+.p-sign{
+    padding-top: 130px;
+}
+
+.float-right{
+    float: right;
+}

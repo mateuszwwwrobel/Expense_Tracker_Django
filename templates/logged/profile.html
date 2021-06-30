@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Profile - Expense Tracker</title>
+{% endblock title %}
+
+{% block background %}
+<body class="bg-1">
+{% endblock %}
+
+{% block content %}
+
+<div class="font-poppins div-trans-purple mt-5 row">
+    <h2 class="p-4">
+        <i class="px-2 fa-lg fas fa-coins"></i>My Budgets
+    </h2>
+    <div class="col-lg-6">
+        <h5 class="p-2"><i class="px-2 fas fa-lg fa-arrow-circle-down"></i>Created BUDGETS</h5>
+        <ul>
+            {% for budget in own_budgets %}
+            <li class="py-3">
+                <a class="text-white budget-list" href="{% url 'budget' pk=budget.id %}">
+                    {{ budget.name|capfirst }}
+                </a>
+                <a href="{% url 'statistics' pk=budget.id %}" class="mx-3 stats-icon">
+                    <i class="fas fa-lg fa-chart-line"></i>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-lg-6">
+        <h5 class="p-2"><i class="px-2 fas fa-lg fa-arrow-circle-down"></i>Joined BUDGETS</h5>
+        <ul>
+            {% for budget in member_budgets %}
+            <li class="py-2">
+                <a class="text-white" href="{% url 'budget' pk=budget.id %}">
+                    {{ budget.name|capfirst }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="font-poppins div-trans-purple mt-5 row">
+    <h2 class="p-4">
+        <i class="px-2 fa-lg fas fa-user"></i>My Profile
+    </h2>
+    <div class="col-lg-6">
+        <h5 class="p-2"><i class="px-2 fas fa-lg fa-arrow-circle-down"></i>USER INFO</h5>
+        <p class="px-3">USERNAME: <strong>{{ user.username }}</strong></p>
+        <p class="px-3">FIRST NAME: <strong>{{ user.first_name }}</strong></p>
+        <p class="px-3">LAST NAME: <strong>{{ user.last_name }}</strong></p>
+        <p class="px-3">EMAIL: <strong>{{ user.email }}</strong></p>
+    </div>
+    <div class="col-lg-6">
+        <h5 class="p-2"><i class="px-2 fas fa-lg fa-arrow-circle-down"></i>ACCOUNT</h5>
+        <ul>
+            <li class="my-1"><a class="text-white" href="#">Change password</a></li>
+            <li class="my-1"><a class="text-white" href="#">Delete account</a></li>
+            <li class="my-1"><a class="text-white" href="#">something else?</a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}

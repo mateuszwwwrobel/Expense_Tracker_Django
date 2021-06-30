@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Signup - Expense Tracker </title>
+{% endblock title %}
+
+{% block background %}
+<body class="bg-2">
+{% endblock %}
+
+{% block content %}
+
+<div class="signup-bg font-poppins p-sign mt-5 text-center">
+    <div class="">
+        <h2 class="py-3 font-poppins">SIGN UP</h2>
+        <form class="pb-4" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <p class="font-poppins font-poppins-navbar">
+                {{ field.label_tag }}
+                <br>
+                <span class="form-label">{{ field }}</span>
+                {% for error in field.errors %}
+            <p class="text-danger bg-warning">{{ error }}</p>
+            {% endfor %}
+            </p>
+            {% endfor %}
+            <button class="text-white CTA-button px-5" type="submit">CREATE ACCOUNT</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
