@@ -1,0 +1,1 @@
+web: gunicorn Expense_Tracker_Django.wsgi --log-file -
