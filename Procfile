@@ -1,1 +1,1 @@
-web: gunicorn Expense_Tracker_Django.wsgi --log-file -
+web: gunicorn Expense_Tracker_Django.wsgi:application --log-file - --log-level debug
