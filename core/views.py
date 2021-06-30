@@ -1,5 +1,9 @@
 from datetime import datetime
+from random import randint
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from django.db.models import Sum
 from django.shortcuts import render
 from django.views.generic import TemplateView, View, DetailView
 from core.forms import CreateBudgetForm
@@ -106,7 +110,6 @@ class ShowStatistics(LoginRequiredMixin, View):
                 filter(created_at__gte=datetime(s_year, s_month, 1)).\
                 filter(created_at__lt=datetime(e_year, e_month + 1, 1))
         else:
-            # annotate pomoże na categorie rozbic?
             year = start_date[:4]
             month = start_date[-2:]
 
@@ -114,8 +117,35 @@ class ShowStatistics(LoginRequiredMixin, View):
                 filter(created_at__year=year).\
                 filter(created_at__month=month)
 
+        chart_1_data = self.get_percentage_chart_data(expenses)
+
         context = {
+            'budget': budget,
             'expenses': expenses,
+            'chart_1_data': chart_1_data,
         }
 
         return render(request, 'logged/budget_stats_show.html', context)
+
+    @staticmethod
+    def get_percentage_chart_data(queryset):
+        expense_percentage = dict(queryset.values_list('category').annotate(total_price=Sum('price')))
+        total_expenses = queryset.aggregate(sum=Sum('price'))
+
+        dataset = {}
+        for category, amount in expense_percentage.items():
+            percentage = (100 * amount) / total_expenses['sum']
+            percentage = float(percentage)
+            dataset[category] = round(percentage, 2)
+
+        colors = []
+        for color in range(len(expense_percentage)):
+            color = '#%06x' % randint(0, 0xFFFFFF)
+            colors.append(color)
+
+        data = {
+            'labels': list(dataset.keys()),
+            'data': list(dataset.values()),
+            'colors': colors,
+        }
+        return data
