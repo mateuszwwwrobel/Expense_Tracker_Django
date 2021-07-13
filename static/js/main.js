@@ -56,3 +56,7 @@ function DeleteExpense(expense_id) {
         })
     }
 }
+
+setTimeout(function(){
+    document.getElementById("message").innerHTML = '';
+}, 4000);
