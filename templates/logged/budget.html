@@ -38,10 +38,12 @@
                 <input type="hidden" id="user" name="user" value="{{ request.user.id }}">
                 <input class="text-white CTA-button px-5" type="submit" value="ADD">
             </div>
-
         </form>
+        <p>Total spend this month: <strong>{{ total_month }} {{ budget.currency }}</strong></p>
+        <p>Total spend this year: <strong>{{ total_year }} {{ budget.currency }}</strong></p>
     </div>
     {% if expenses %}
+    <h3 class="px-4">This month:</h3>
     {% for expense in expenses %}
     <div class="div-trans-purple row py-4 align-items">
         <div class="col-8 px-5 row align-items">

@@ -18,31 +18,28 @@
     {% endblock title %}
 </head>
 
-
 {% block background %}
-
-{% endblock %}
-
+{% endblock background %}
 
 <div class="container mt-3">
     {% include 'navbar.html' %}
 
     {% if messages %}
-    <ul class="messages mt-2">
         {% for message in messages %}
-        <li>{{ message }}</li>
+        <p class="messages mt-3" id="message">{{ message }}</p>
         {% endfor %}
-    </ul>
     {% endif %}
 
-
     {% block content %}
-
     {% endblock content %}
+
 </div>
 
 {% include 'footer.html' %}
 {% include 'scripts.html' %}
+
+{% block charts %}
+{% endblock charts %}
 
 </body>
 </html>
