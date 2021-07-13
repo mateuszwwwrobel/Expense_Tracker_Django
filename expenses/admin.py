@@ -4,7 +4,7 @@ from expenses.models import Expense, Budget
 
 @admin.register(Expense)
 class ExpenseAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'budget', 'category', 'updated_at')
+    list_display = ('name', 'price', 'budget', 'category', 'created_at', 'updated_at')
     list_per_page = 25
     list_display_links = ('name', 'price')
 
