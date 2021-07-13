@@ -4,9 +4,9 @@ from random import randint
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.db.models import Sum
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View, DetailView
-from core.forms import CreateBudgetForm
+from core.forms import CreateBudgetForm, CreateHistoricalExpense
 from django.contrib import messages
 from expenses.models import Budget, Expense
 from expenses.serializers import ExpenseSerializer
@@ -47,12 +47,15 @@ class BudgetView(LoginRequiredMixin, DetailView):
     def get(self, request, pk):
         serializer = ExpenseSerializer()
         budget = Budget.objects.get(id=pk)
-        expenses = Expense.objects.filter(budget=budget).order_by('-created_at')
+        expenses = Expense.objects.filter(budget=budget).order_by('-created_at')\
+            .filter(created_at__month=datetime.today().month)
 
         context = {
             'serializer': serializer,
             'budget': budget,
             'expenses': expenses,
+            'total_year': Expense.get_total_expenses_for_current_year(budget.id),
+            'total_month': Expense.get_total_expenses_for_current_month(budget.id),
         }
 
         return render(request, 'logged/budget.html', context)
@@ -77,6 +80,42 @@ class CreateBudgetView(LoginRequiredMixin, View):
             messages.success(request, 'Budget successfully created!')
 
         return render(request, 'logged/create_budget.html', {'form': CreateBudgetForm()})
+
+
+class CreateHistoricalExpenseView(LoginRequiredMixin, View):
+
+    def get(self, request):
+        user = {
+            'user': request.user
+        }
+        form = CreateHistoricalExpense(user)
+        context = {
+            'form': form,
+        }
+
+        return render(request, 'logged/historical_expenses.html', context)
+
+    def post(self, request):
+        user = {
+            'user': request.user
+        }
+        form = CreateHistoricalExpense(request.POST, user)
+
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = request.user
+            obj.save()
+            messages.success(request, 'Expense successfully added.')
+            return redirect('create_expense')
+
+        else:
+            messages.error(request, 'Please enter a correct date. YYYY-MM-DD')
+
+        return render(
+            request,
+            'logged/historical_expenses.html',
+            {'form': CreateHistoricalExpense(request.POST, user)}
+        )
 
 
 class BudgetStats(LoginRequiredMixin, View):
