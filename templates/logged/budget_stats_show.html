@@ -43,3 +43,36 @@
 </div>
 
 {% endblock content %}
+
+{% block charts %}
+<script>
+
+    var chart_1 = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: {{ chart_1_data.data|safe }},
+                backgroundColor: {{ chart_1_data.colors|safe }},
+                label: 'Population'
+            }],
+            labels: {{ chart_1_data.labels|safe }}
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                position: 'top',
+                text: 'Structure of Expenses by Category [%]',
+                fontSize: 18,
+            }
+        }
+    };
+
+    Chart.defaults.global.defaultFontColor = 'white';
+    window.onload = function () {
+        var ctx = document.getElementById('pie-chart').getContext('2d');
+        window.myPie = new Chart(ctx, chart_1);
+    };
+
+</script>
+{% endblock charts %}

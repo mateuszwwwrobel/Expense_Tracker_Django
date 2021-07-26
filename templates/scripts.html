@@ -4,33 +4,3 @@
 <script src="{% static 'js/main.js'%}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-<script>
-
-    var chart_1 = {
-        type: 'pie',
-        data: {
-            datasets: [{
-                data: {{ chart_1_data.data|safe }},
-                backgroundColor: {{ chart_1_data.colors|safe }},
-                label: 'Population'
-            }],
-            labels: {{ chart_1_data.labels|safe }}
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                position: 'top',
-                text: 'Structure of Expenses by Category [%]',
-                fontSize: 18,
-            }
-        }
-    };
-
-    Chart.defaults.global.defaultFontColor = 'white';
-    window.onload = function () {
-        var ctx = document.getElementById('pie-chart').getContext('2d');
-        window.myPie = new Chart(ctx, chart_1);
-    };
-
-</script>

@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('profile/', core_views.ProfileView.as_view(), name='profile'),
     path('create_budget', core_views.CreateBudgetView.as_view(), name='create_budget'),
+    path('create_expense', core_views.CreateHistoricalExpenseView.as_view(), name='create_expense'),
     path('budget/<int:pk>', core_views.BudgetView.as_view(), name='budget'),
     path('statistics/<int:pk>', core_views.BudgetStats.as_view(), name='statistics'),
     path('show_stats', core_views.ShowStatistics.as_view(), name='show_stats'),
