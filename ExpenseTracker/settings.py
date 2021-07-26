@@ -29,6 +29,15 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com', ]
 
+# Sendgrid
+EMAIL_BACKEND = "sgbackend.SendGridBackend"
+SENDGRID_API_KEY = os.environ['SENDGRID_API']
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'app219599071@heroku.com'
+EMAIL_USE_TLS = True
 
 # Application definition
 
@@ -61,8 +70,6 @@ MIDDLEWARE = [
 
 
 ROOT_URLCONF = 'ExpenseTracker.urls'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 TEMPLATES = [
     {
