@@ -156,9 +156,11 @@ class ShowStatistics(LoginRequiredMixin, View):
         chart_1_data = self.get_chart_data(expenses)
         chronological_expenses = expenses.order_by('created_at')
 
+        agr_expenses = expenses.values('category').annotate(total_price=Sum('price'))
+
         context = {
             'budget': budget,
-            'expenses': chronological_expenses,
+            'expenses': agr_expenses,
             'chart_1_data': chart_1_data,
         }
 

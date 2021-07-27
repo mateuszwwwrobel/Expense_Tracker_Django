@@ -17,17 +17,15 @@
         <table class="text-white table table-sm" id="myTable">
             <thead class="thead-dark">
             <tr>
-                <th>Price [{{ budget.currency }}]</th>
                 <th>Category</th>
-                <th>Date</th>
+                <th>Total price[{{ budget.currency }}]</th>
             </tr>
             </thead>
             <tbody>
             {% for expense in expenses %}
             <tr>
-                <td>{{ expense.price }}</td>
                 <td>{{ expense.category }}</td>
-                <td>{{ expense.created_at|date:'d M Y' }}</td>
+                <td>{{ expense.total_price|floatformat:2 }}</td>
             </tr>
             {% endfor %}
             </tbody>
