@@ -43,6 +43,9 @@ class Expense(models.Model):
     def __str__(self):
         return f"{self.price} - {self.category}"
 
+    class Meta:
+        ordering = ('created_at', )
+
     @classmethod
     def get_by_id(cls, id):
         try:

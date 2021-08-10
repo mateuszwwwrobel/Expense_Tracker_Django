@@ -2,6 +2,7 @@ from datetime import datetime
 from random import randint
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 
 from django.db.models import Sum
 from django.shortcuts import render, redirect
@@ -153,20 +154,25 @@ class ShowStatistics(LoginRequiredMixin, View):
                 filter(created_at__year=year).\
                 filter(created_at__month=month)
 
-        chart_1_data = self.get_chart_data(expenses)
-        chronological_expenses = expenses.order_by('created_at')
+        chart_1_data = self.get_chart_data_by_categories(expenses)
+        chart_2_data = self.get_chart_data_by_users(expenses)
+        agr_expenses = expenses.values('category').order_by('category').annotate(total_price=Sum('price'))
 
         context = {
             'budget': budget,
-            'expenses': chronological_expenses,
+            'expenses': agr_expenses,
             'chart_1_data': chart_1_data,
+            'chart_2_data': chart_2_data,
         }
 
         return render(request, 'logged/budget_stats_show.html', context)
 
     @staticmethod
-    def get_chart_data(queryset):
-        expense_percentage = dict(queryset.values_list('category').annotate(total_price=Sum('price')))
+    def get_chart_data_by_categories(queryset):
+        expense_percentage = dict(queryset
+                                  .values_list('category')
+                                  .order_by('category')
+                                  .annotate(total_price=Sum('price')))
         total_expenses = queryset.aggregate(sum=Sum('price'))
 
         dataset = {}
@@ -185,4 +191,32 @@ class ShowStatistics(LoginRequiredMixin, View):
             'data': list(dataset.values()),
             'colors': colors,
         }
+        return data
+
+    @staticmethod
+    def get_chart_data_by_users(queryset):
+        expense_percentage = dict(queryset
+                                  .values_list('user')
+                                  .order_by('user')
+                                  .annotate(total_price=Sum('price')))
+        total_expenses = queryset.aggregate(sum=Sum('price'))
+
+        dataset = {}
+        for user, amount in expense_percentage.items():
+            percentage = (100 * amount) / total_expenses['sum']
+            percentage = float(percentage)
+            username = User.objects.get(id=user).username.capitalize()
+            dataset[username] = round(percentage, 2)
+
+        colors = []
+        for color in range(len(expense_percentage)):
+            color = '#%06x' % randint(0, 0xFFFFFF)
+            colors.append(color)
+
+        data = {
+            'labels': list(dataset.keys()),
+            'data': list(dataset.values()),
+            'colors': colors,
+        }
+        print(data)
         return data
