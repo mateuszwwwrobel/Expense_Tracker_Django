@@ -36,7 +36,12 @@
         {% endif %}
     </div>
     <div class="col-lg-6 text-center">
-        <canvas id="pie-chart"></canvas>
+        <div>
+            <canvas id="pie-chart-1"></canvas>
+        </div>
+        <div>
+            <canvas id="pie-chart-2"></canvas>
+        </div>
     </div>
 </div>
 
@@ -45,32 +50,65 @@
 {% block charts %}
 <script>
 
-    var chart_1 = {
+Chart.defaults.global.defaultFontColor = 'white';
+
+$(function () {
+    var ctx = document.getElementById("pie-chart-1").getContext('2d');
+    var data = {
+        datasets: [{
+            data: {{ chart_1_data.data|safe }},
+            backgroundColor: {{ chart_1_data.colors|safe }},
+        }],
+        labels: {{ chart_1_data.labels|safe }}
+    };
+    var myDoughnutChart = new Chart(ctx, {
         type: 'pie',
-        data: {
-            datasets: [{
-                data: {{ chart_1_data.data|safe }},
-                backgroundColor: {{ chart_1_data.colors|safe }},
-                label: 'Population'
-            }],
-            labels: {{ chart_1_data.labels|safe }}
-        },
+        data: data,
         options: {
-            responsive: true,
             title: {
                 display: true,
                 position: 'top',
                 text: 'Structure of Expenses by Category [%]',
                 fontSize: 18,
+            },
+            responsive: true,
+            legend: {
+                position: 'bottom',
+                labels: {
+                    boxWidth: 15
+                }
             }
         }
-    };
+    });
 
-    Chart.defaults.global.defaultFontColor = 'white';
-    window.onload = function () {
-        var ctx = document.getElementById('pie-chart').getContext('2d');
-        window.myPie = new Chart(ctx, chart_1);
+    var ctx_2 = document.getElementById("pie-chart-2").getContext('2d');
+    var data_2 = {
+        datasets: [{
+            data: {{ chart_2_data.data|safe }},
+            backgroundColor: {{ chart_2_data.colors|safe }},
+        }],
+        labels: {{ chart_2_data.labels|safe }}
     };
+    var myDoughnutChart_2 = new Chart(ctx_2, {
+        type: 'doughnut',
+        data: data_2,
+        options: {
+            title: {
+                display: true,
+                position: 'top',
+                text: 'Structure of Expenses by User [%]',
+                fontSize: 18,
+            },
+            responsive: true,
+            legend: {
+                position: 'bottom',
+                labels: {
+                    boxWidth: 12
+                }
+            }
+        }
+    });
+});
 
 </script>
 {% endblock charts %}
