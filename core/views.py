@@ -218,5 +218,4 @@ class ShowStatistics(LoginRequiredMixin, View):
             'data': list(dataset.values()),
             'colors': colors,
         }
-        print(data)
         return data

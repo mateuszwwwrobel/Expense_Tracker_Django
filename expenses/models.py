@@ -7,8 +7,11 @@ from django.db.models import Sum
 
 categories = (
     ('Food', 'Food'),
+    ('Takeaway', 'Takeaway'),
     ('Entertainment', 'Entertainment'),
     ('Bills', 'Bills'),
+    ('Household Items', 'Household Items'),
+    ('Other', 'Other'),
     ('Travel', 'Travel'),
 )
 

@@ -32,6 +32,9 @@
                     <option value="Food">Food</option>
                     <option value="Entertainment">Entertainment</option>
                     <option value="Travel">Travel</option>
+                    <option value="Takeaway">Takeaway</option>
+                    <option value="Household Items">Household Items</option>
+                    <option value="Other">Other</option>
                     <option value="Bills">Bills</option>
                 </select>
                 <input type="hidden" id="budget" name="budget" value="{{ budget.id }}">
@@ -56,6 +59,12 @@
                 <span class="category-icon"><i class="fas fa-route fa-lg"></i></span>
                 {% elif expense.category == 'Entertainment' %}
                 <span class="category-icon"><i class="fas fa-atom fa-lg"></i></span>
+                {% elif expense.category == 'Household Items' %}
+                <span class="category-icon"><i class="fas fa-home fa-lg"></i></span>
+                {% elif expense.category == 'Takeaway' %}
+                <span class="category-icon"><i class="fas fa-drumstick-bite fa-lg"></i></span>
+                {% elif expense.category == 'Other' %}
+                <span class="category-icon"><i class="fas fa-cubes fa-lg"></i></span>
                 {% endif %}
             </div>
             <div class="col-10">
